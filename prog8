@@ -1,0 +1,39 @@
+% Question 8: Function for Projectile Motion
+% Define the projectile motion function
+function [hmax, dmax] = projectile_motion(v0, theta_deg)
+    g = 9.81; % Acceleration due to gravity in m/s^2
+    
+    % Convert angle to radians
+    theta_rad = deg2rad(theta_deg);
+    
+    % Calculate maximum height
+    hmax = (v0^2 * sin(theta_rad)^2) / (2 * g);
+    
+    % Calculate maximum distance
+    dmax = (v0^2 * sin(2 * theta_rad)) / g;
+    
+    % Time of flight
+    t_flight = 2 * v0 * sin(theta_rad) / g;
+    
+    % Generate trajectory
+    t = linspace(0, t_flight, 1000);
+    x = v0 * cos(theta_rad) * t;
+    y = v0 * sin(theta_rad) * t - 0.5 * g * t.^2;
+    
+    % Plot trajectory
+    figure;
+    plot(x, y, 'b', 'LineWidth', 1.5);
+    title('Projectile Trajectory');
+    xlabel('Horizontal Distance (m)');
+    ylabel('Vertical Distance (m)');
+    grid on;
+end
+
+% Use the function for the given parameters
+v0 = 230; % Initial velocity in m/s
+theta_deg = 39; % Launch angle in degrees
+[hmax, dmax] = projectile_motion(v0, theta_deg);
+
+% Display the results
+fprintf('Maximum height: %.2f m\n', hmax);
+fprintf('Maximum distance: %.2f m\n', dmax);
