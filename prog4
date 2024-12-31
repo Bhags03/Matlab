@@ -1,0 +1,37 @@
+% Given data
+r = 120; % Crank radius in mm
+l = 250; % Connecting rod length in mm
+rpm = 500; % Crank speed in revolutions per minute
+theta = linspace(0, 2*pi, 1000); % Crank angle in radians
+
+% Convert rpm to angular velocity in rad/s
+omega = rpm * 2 * pi / 60;
+
+% Position of piston
+x = r * (1 - cos(theta)) + sqrt(l^2 - (r * sin(theta)).^2);
+
+% Velocity of piston
+v = diff(x) ./ diff(theta) * omega;
+
+% Acceleration of piston
+a = diff(v) ./ diff(theta(1:end-1)) * omega;
+
+% Plot results
+figure;
+subplot(3, 1, 1);
+plot(theta, x, 'LineWidth', 1.5);
+title('Position of Piston');
+xlabel('\theta (rad)');
+ylabel('x (mm)');
+
+subplot(3, 1, 2);
+plot(theta(1:end-1), v, 'LineWidth', 1.5);
+title('Velocity of Piston');
+xlabel('\theta (rad)');
+ylabel('v (mm/s)');
+
+subplot(3, 1, 3);
+plot(theta(1:end-2), a, 'LineWidth', 1.5);
+title('Acceleration of Piston');
+xlabel('\theta (rad)');
+ylabel('a (mm/s^2)');
