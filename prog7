@@ -1,0 +1,10 @@
+% Question 7: Random Order of Singers
+% List of singers
+singers = {'John', 'Mary', 'Tracy', 'Mike', 'Katie', 'David'};
+
+% Randomly shuffle the order
+random_order = singers(randperm(length(singers)));
+
+% Display the random order
+fprintf('Random performance order:\n');
+disp(random_order);
