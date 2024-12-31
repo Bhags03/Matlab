@@ -1,0 +1,19 @@
+% Question 1: Verifying the trigonometric identity
+x = pi / 5; % Substituting x = pi / 5
+
+% Left-hand side of the equation
+lhs = cos(x/2)^2;
+
+% Right-hand side of the equation
+rhs = (tan(x) + sin(x)) / (2 * tan(x));
+
+% Display results
+fprintf('LHS = %.5f\n', lhs);
+fprintf('RHS = %.5f\n', rhs);
+
+% Check if they are approximately equal
+if abs(lhs - rhs) < 1e-5
+    fprintf('The identity is correct.\n');
+else
+    fprintf('The identity is incorrect.\n');
+end
