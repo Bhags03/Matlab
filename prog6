@@ -1,0 +1,44 @@
+% Question 6: Retirement Account Simulation
+% Given data
+initial_balance = 300000; % Initial deposit in $
+interest_rate = 0.05; % Annual interest rate (5%)
+withdrawal = 25000; % Initial withdrawal amount in $
+inflation_rate = 0.02; % Annual inflation rate (2%)
+
+% Initialize variables
+balance = initial_balance;
+year = 0;
+withdrawals = [];
+balances = [];
+
+% Simulation loop
+while balance > 0
+    year = year + 1;
+    % Record current balance and withdrawal
+    balances(end+1) = balance; %#ok<*SAGROW>
+    withdrawals(end+1) = withdrawal;
+    % Update balance
+    balance = balance * (1 + interest_rate) - withdrawal;
+    % Update withdrawal amount for inflation
+    withdrawal = withdrawal * (1 + inflation_rate);
+    if balance < 0
+        balance = 0; % Avoid negative balances
+    end
+end
+
+% Plot yearly withdrawals and balances
+figure;
+subplot(2, 1, 1);
+bar(1:year, withdrawals, 'b');
+title('Yearly Withdrawals');
+xlabel('Year');
+ylabel('Withdrawal Amount ($)');
+
+subplot(2, 1, 2);
+plot(1:year, balances, 'r', 'LineWidth', 1.5);
+title('Account Balance Over Time');
+xlabel('Year');
+ylabel('Balance ($)');
+grid on;
+
+fprintf('The account will last for %d years.\n', year);
