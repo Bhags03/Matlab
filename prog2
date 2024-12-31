@@ -1,0 +1,11 @@
+% Question 2: Temperature of the soda can after 3 hours
+T0 = 120; % Initial temperature of the soda can in Fahrenheit
+Ts = 38;  % Temperature of the refrigerator in Fahrenheit
+k = 0.45; % Cooling constant
+t = 3;    % Time in hours
+
+% Newton's law of cooling formula
+T = Ts + (T0 - Ts) * exp(-k * t);
+
+% Display the result
+fprintf('The temperature of the soda can after %.1f hours is %.2f°F.\n', t, T);
