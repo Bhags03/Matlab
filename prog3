@@ -1,0 +1,16 @@
+% Question 3: Coefficient of friction
+% Given data
+m = [2, 4, 5, 10, 20, 50]; % Masses in kg
+F = [12.5, 23.5, 30, 61, 117, 294]; % Forces in N
+g = 9.81; % Acceleration due to gravity in m/s^2
+
+% Calculating the coefficient of friction for each test
+mu = F ./ (m * g);
+
+% Calculating the average coefficient of friction
+mu_avg = mean(mu);
+
+% Display results
+fprintf('Coefficient of friction for each test: \n');
+disp(mu);
+fprintf('Average coefficient of friction: %.5f\n', mu_avg);
